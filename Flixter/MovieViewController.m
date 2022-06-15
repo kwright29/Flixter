@@ -5,16 +5,18 @@
 //  Created by Khloe Wright on 6/15/22.
 //
 
-#import <Foundation/Foundation.h>
 #import "MovieViewController.h"
 
 @interface MovieViewController ()
+@property (nonatomic, strong) NSArray *myArray;
 
 @end
 
-@implementation MovieViewController 
+@implementation MovieViewController
 
-- (void) viewDidLoad {
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -24,14 +26,27 @@
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-
+               NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
                // TODO: Get the array of movies
+               NSArray *myArray = dataDictionary[@"results"];
                // TODO: Store the movies in a property to use elsewhere
+               NSLog(@"%@", myArray);
                // TODO: Reload your table view data
            }
        }];
     [task resume];
     
+
 }
 
-@end 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
