@@ -7,8 +7,10 @@
 
 #import "MovieViewController.h"
 
-@interface MovieViewController ()
-@property (nonatomic, strong) NSArray *myArray;
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate> // this class implements this protocol. we will implement these methods in our code
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *movies;
 
 @end
 
@@ -28,9 +30,9 @@
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
                // TODO: Get the array of movies
-               NSArray *myArray = dataDictionary[@"results"];
+               NSArray *movies = dataDictionary[@"results"];
                // TODO: Store the movies in a property to use elsewhere
-               NSLog(@"%@", myArray);
+               NSLog(@"%@", movies);
                // TODO: Reload your table view data
            }
        }];
