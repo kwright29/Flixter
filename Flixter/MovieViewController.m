@@ -16,17 +16,28 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
-
+@property (strong, nonatomic) UIRefreshControl *refreshControl; //made refreshControl varibale accessible to whole file since different methods are using it
 @end
 
 @implementation MovieViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // initializing UIRefresh Control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged]; //bind action to refresh control
+    [self.tableView insertSubview:self.refreshControl atIndex:0]; //inserts the refresh control into the table view
+    
     
     self.tableView.dataSource = self;  
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
+    [self loadData];
+    
+    
+}
+
+- (void)loadData {
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -53,13 +64,22 @@
                
                // TODO: Reload your table view data
                
-               [self.tableView reloadData]; //reloading because data may have changed 
+               [self beginRefresh:self.refreshControl];
            }
        }];
     [task resume];
-    
-
 }
+
+// Makes a network request to get updated data
+// Updates the tableView with the new data
+// Hides the RefreshControl
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+   // TODO: Reload your table view data
+   [self.tableView reloadData]; //reloading because data may have changed
+   [refreshControl endRefreshing];
+       
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.movies.count; // tying to data
@@ -71,9 +91,10 @@
     // using indexPath
     NSDictionary *movie = self.movies[indexPath.row];
     // loading each poster image
-    
-    NSString *urlString = movie[@"original_path"];
-    NSURL *url = [NSURL URLWithString:urlString];
+    NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
+    NSString *urlString = movie[@"poster_path"];
+    NSString *fullURL = [baseURL stringByAppendingString:urlString];
+    NSURL *url = [[NSURL alloc] initWithString:fullURL];
     
     [cell.movieImageViewer setImageWithURL:url];
     
