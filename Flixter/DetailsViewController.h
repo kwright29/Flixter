@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UIImageView *detailPoster;
 @property (strong, nonatomic) IBOutlet UILabel *detailDescription;
 @property (strong, nonatomic) IBOutlet UILabel *detailRDate;
-
+@property (strong, nonatomic) NSDictionary *detailDict;
 
 @end
 

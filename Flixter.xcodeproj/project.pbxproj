@@ -75,6 +75,7 @@
 		EE55CE83285A476F00F6C1BB /* FlixterUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlixterUITestsLaunchTests.m; sourceTree = "<group>"; };
 		EE55CE97285A975800F6C1BB /* MovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		EE55CE98285A975800F6C1BB /* MovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
+		EE9B5E11285D4CDF0018D6F2 /* READme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = READme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				EE55CE5A285A476D00F6C1BB /* Flixter */,
-				EE55CE76285A476F00F6C1BB /* FlixterTests */,
 				EE55CE80285A476F00F6C1BB /* FlixterUITests */,
 				EE55CE59285A476D00F6C1BB /* Products */,
 				F57B51E22F53167BE8DD2491 /* Pods */,
@@ -157,6 +157,7 @@
 				EE121552285BDD3A0091AB8C /* MovieCell.m */,
 				EE121556285D08350091AB8C /* DetailsViewController.h */,
 				EE121557285D08350091AB8C /* DetailsViewController.m */,
+				EE9B5E11285D4CDF0018D6F2 /* READme.md */,
 			);
 			path = Flixter;
 			sourceTree = "<group>";
@@ -172,6 +173,7 @@
 		EE55CE80285A476F00F6C1BB /* FlixterUITests */ = {
 			isa = PBXGroup;
 			children = (
+				EE55CE76285A476F00F6C1BB /* FlixterTests */,
 				EE55CE81285A476F00F6C1BB /* FlixterUITests.m */,
 				EE55CE83285A476F00F6C1BB /* FlixterUITestsLaunchTests.m */,
 			);

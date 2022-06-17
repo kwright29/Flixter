@@ -8,6 +8,8 @@
 #import "MovieViewController.h"
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
+
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate> // this class implements this protocol. we will implement these methods in our code
 
@@ -17,6 +19,10 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) UIRefreshControl *refreshControl; //made refreshControl varibale accessible to whole file since different methods are using it
+@property (strong, nonatomic) NSDictionary *dataDictionary;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+
 @end
 
 @implementation MovieViewController
@@ -32,7 +38,12 @@
     self.tableView.dataSource = self;  
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
+    
+    //activity indicators 
+    [self.activityIndicator startAnimating];
+    
     [self loadData];
+    
     
     
 }
@@ -46,12 +57,13 @@
                NSLog(@"%@", [error localizedDescription]);
            }
            else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"%@", dataDictionary);// log an object with the %@ formatter.
+               [self.activityIndicator stopAnimating];
+               self.dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSLog(@"%@", self.dataDictionary);// log an object with the %@ formatter.
                
                // TODO: Get the array of movies
                
-               self.movies = dataDictionary[@"results"];
+               self.movies = self.dataDictionary[@"results"];
                //NSArray *movies = dataDictionary[@"results"];
                
                // TODO: Store the movies in a property to use elsewhere
@@ -65,6 +77,8 @@
                // TODO: Reload your table view data
                
                [self beginRefresh:self.refreshControl];
+               //hides automatically if "Hides When Stopped" is enables
+               
            }
        }];
     [task resume];
@@ -116,6 +130,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSIndexPath *myIndexPath = [self.tableView indexPathForCell:sender];
+    NSDictionary *dataToPass = self.movies[myIndexPath.row];
+    DetailsViewController *detailVC = [segue destinationViewController];
+    detailVC.detailDict = dataToPass;
+    
 }
 
 
