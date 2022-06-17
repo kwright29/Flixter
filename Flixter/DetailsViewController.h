@@ -10,6 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailsViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *detailTitle;
+@property (strong, nonatomic) IBOutlet UIImageView *detailPoster;
+@property (strong, nonatomic) IBOutlet UILabel *detailDescription;
+@property (strong, nonatomic) IBOutlet UILabel *detailRDate;
+
 
 @end
 
