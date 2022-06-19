@@ -22,6 +22,8 @@
 		EE55CE82285A476F00F6C1BB /* FlixterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE55CE81285A476F00F6C1BB /* FlixterUITests.m */; };
 		EE55CE84285A476F00F6C1BB /* FlixterUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE55CE83285A476F00F6C1BB /* FlixterUITestsLaunchTests.m */; };
 		EE55CE99285A975800F6C1BB /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE55CE98285A975800F6C1BB /* MovieViewController.m */; };
+		EED60728285FA2E9000F164F /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED60727285FA2E9000F164F /* GridViewController.m */; };
+		EED6072B285FA4DD000F164F /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EED6072A285FA4DD000F164F /* GridCell.m */; };
 		EF9674901345FFEF6E9D4A20 /* Pods_FlixterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5896B2155F8452FE3942EB5F /* Pods_FlixterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +78,10 @@
 		EE55CE97285A975800F6C1BB /* MovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		EE55CE98285A975800F6C1BB /* MovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		EE9B5E11285D4CDF0018D6F2 /* READme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = READme.md; sourceTree = "<group>"; };
+		EED60726285FA2E9000F164F /* GridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridViewController.h; sourceTree = "<group>"; };
+		EED60727285FA2E9000F164F /* GridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
+		EED60729285FA4DD000F164F /* GridCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GridCell.h; sourceTree = "<group>"; };
+		EED6072A285FA4DD000F164F /* GridCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,10 @@
 				EE121556285D08350091AB8C /* DetailsViewController.h */,
 				EE121557285D08350091AB8C /* DetailsViewController.m */,
 				EE9B5E11285D4CDF0018D6F2 /* READme.md */,
+				EED60726285FA2E9000F164F /* GridViewController.h */,
+				EED60727285FA2E9000F164F /* GridViewController.m */,
+				EED60729285FA4DD000F164F /* GridCell.h */,
+				EED6072A285FA4DD000F164F /* GridCell.m */,
 			);
 			path = Flixter;
 			sourceTree = "<group>";
@@ -435,8 +445,10 @@
 				EE55CE99285A975800F6C1BB /* MovieViewController.m in Sources */,
 				EE121553285BDD3A0091AB8C /* MovieCell.m in Sources */,
 				EE55CE5D285A476D00F6C1BB /* AppDelegate.m in Sources */,
+				EED60728285FA2E9000F164F /* GridViewController.m in Sources */,
 				EE121558285D08350091AB8C /* DetailsViewController.m in Sources */,
 				EE55CE6E285A476F00F6C1BB /* main.m in Sources */,
+				EED6072B285FA4DD000F164F /* GridCell.m in Sources */,
 				EE55CE60285A476D00F6C1BB /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

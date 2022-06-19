@@ -11,7 +11,7 @@
 #import "DetailsViewController.h"
 
 
-@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate> // this class implements this protocol. we will implement these methods in our code
+@interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> // this class implements this protocol. we will implement these methods in our code
 
 // table view data source = shows content
 // delegate = i know how to respond to table view events
@@ -55,6 +55,16 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
+               UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+                                          message:@"The internet connection appears to be offline"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+
+               UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault
+                                                                     handler:^(UIAlertAction * action) {[self loadData];}]; //reloading data after pressing Try Again to see if we can fetch movies
+
+               [alert addAction:defaultAction];
+               [self presentViewController:alert animated:YES completion:nil];
+               
            }
            else {
                [self.activityIndicator stopAnimating];
@@ -130,6 +140,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:sender];
     NSDictionary *dataToPass = self.movies[myIndexPath.row];
     DetailsViewController *detailVC = [segue destinationViewController];
