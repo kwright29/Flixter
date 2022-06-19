@@ -7,13 +7,13 @@
 
 #import "GridViewController.h"
 #import "GridCell.h"
-#import "MovieViewController.m"
 #import "UIImageView+AFNetworking.h"
 
 @interface GridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (strong, nonatomic) IBOutlet UICollectionView *gridCollectionView;
-@property (strong, nonatomic) NSArray *moviePosters;
-@property (strong, nonatomic) NSDictionary *dataDictionary;
+@property (strong, nonatomic) NSDictionary *dataMovies;
+@property (nonatomic, strong) NSArray *movies;
+
 
 @end
 
@@ -32,12 +32,12 @@
                
            }
            else {
-               self.dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"%@", self.dataDictionary);// log an object with the %@ formatter.
+               self.dataMovies = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSLog(@"%@", self.dataMovies);// log an object with the %@ formatter.
                
                // TODO: Get the array of movies
-               
-               self.moviePosters = self.dataDictionary[@"poster_path"];
+               self.movies = self.dataMovies[@"results"];
+              
                //NSArray *movies = dataDictionary[@"results"];
                
                
@@ -54,15 +54,15 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.moviePosters.count;
+    return self.movies.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GridCell" forIndexPath:indexPath];
     
-    
+    NSDictionary *themovie = self.movies[indexPath.row];
     NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
-    NSString *urlString = _moviePosters[indexPath.row];
+    NSString *urlString = themovie[@"poster_path"];
     NSString *fullURL = [baseURL stringByAppendingString:urlString];
     NSURL *url = [[NSURL alloc] initWithString:fullURL];
     
