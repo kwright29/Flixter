@@ -129,6 +129,7 @@
                                         <connections>
                                             <outlet property="gridPoster" destination="1zV-ko-1VS" id="WWS-K3-4eN"/>
                                             <outlet property="gridViewCell" destination="bsH-fj-FfB" id="9ZF-2o-dul"/>
+                                            <segue destination="HOW-1F-2mq" kind="show" id="9lZ-jn-5Ye"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -217,6 +218,9 @@
             <point key="canvasLocation" x="-10.144927536231885" y="-1069.4196428571429"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WFx-jC-20Z"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
