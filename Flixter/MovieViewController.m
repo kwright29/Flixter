@@ -33,8 +33,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged]; //bind action to refresh control
     [self.tableView insertSubview:self.refreshControl atIndex:0]; //inserts the refresh control into the table view
-    
-    
+    //needs bottom inequality constraints for any views that may be the bottom most view
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.dataSource = self;  
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
