@@ -18,14 +18,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _detailTitle.text = _detailDict[@"title"];
-    _detailDescription.text = _detailDict[@"overview"];
+    _detailTitle.text = _movieDetails.title;
+    _detailDescription.text = _movieDetails.synopsis;
     NSString *rd = @"Release Date: ";
-    _detailRDate.text = [rd stringByAppendingString:_detailDict[@"release_date"]];
+    _detailRDate.text = [rd stringByAppendingString:_movieDetails.releaseDate];
     
     //loading poster image
     NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
-    NSString *urlString = _detailDict[@"poster_path"];
+    NSString *urlString = _movieDetails.posterURL;
     NSString *fullURL = [baseURL stringByAppendingString:urlString];
     NSURL *url = [[NSURL alloc] initWithString:fullURL];
     

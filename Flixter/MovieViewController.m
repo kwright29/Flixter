@@ -9,6 +9,7 @@
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "Movie.h"
 
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> // this class implements this protocol. we will implement these methods in our code
@@ -17,7 +18,7 @@
 // delegate = i know how to respond to table view events
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSMutableArray *movies;
 @property (strong, nonatomic) UIRefreshControl *refreshControl; //made refreshControl varibale accessible to whole file since different methods are using it
 @property (strong, nonatomic) NSDictionary *dataDictionary;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -73,13 +74,15 @@
                
                // TODO: Get the array of movies
                
-               self.movies = self.dataDictionary[@"results"];
+               NSArray *dictionaries = self.dataDictionary[@"results"];
                //NSArray *movies = dataDictionary[@"results"];
                
                // TODO: Store the movies in a property to use elsewhere
                
-               for (NSDictionary *movie in self.movies) {
-                   NSLog(@"%@", movie[@"title"]);
+               for (NSDictionary *dictionary in dictionaries) {
+                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                   [self.movies addObject:movie];
+                   NSLog(@"%@", movie.title);
                }
                 //NSLog(@"%@", movies);
                
@@ -113,19 +116,19 @@
     MovieCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
     // using indexPath
-    NSDictionary *movie = self.movies[indexPath.row];
+    Movie *movie = self.movies[indexPath.row];
     // loading each poster image
     NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
-    NSString *urlString = movie[@"poster_path"];
+    NSString *urlString = movie.posterURL;
     NSString *fullURL = [baseURL stringByAppendingString:urlString];
     NSURL *url = [[NSURL alloc] initWithString:fullURL];
     
     [cell.movieImageViewer setImageWithURL:url];
     
     
-    cell.movieSynposis.text = movie[@"overview"];
+    cell.movieSynposis.text = movie.synopsis;
     
-    cell.movieTitle.text = movie[@"title"];
+    cell.movieTitle.text = movie.title;
     
     
     
@@ -142,9 +145,9 @@
     // Pass the selected object to the new view controller.
     
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:sender];
-    NSDictionary *dataToPass = self.movies[myIndexPath.row];
+    Movie *dataToPass = self.movies[myIndexPath.row];
     DetailsViewController *detailVC = [segue destinationViewController];
-    detailVC.detailDict = dataToPass;
+    detailVC.movieDetails = dataToPass;
     
 }
 
