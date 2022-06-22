@@ -12,14 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Movie : NSObject
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *posterURL;
+@property (nonatomic, strong) NSURL *posterURL;
 @property (nonatomic, strong) NSString *synopsis;
 @property (nonatomic, strong) NSString *releaseDate;
 
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 
-+ (NSArray *)moviesWithDictionaries:(NSArray *)dictionaries;
++ (NSMutableArray *)moviesWithDictionaries:(NSArray *)dictionaries;
+
+
 
 @end
 

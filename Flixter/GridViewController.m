@@ -87,9 +87,9 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     NSIndexPath *myIndexPath = [self.gridCollectionView indexPathForCell:sender];
-    NSDictionary *dataToPass = self.movies[myIndexPath.row];
+    Movie *dataToPass = self.movies[myIndexPath.row];
     DetailsViewController *detailVC = [segue destinationViewController];
-    detailVC.detailDict = dataToPass;
+    detailVC.movieDetails = dataToPass;
 }
 
 

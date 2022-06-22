@@ -79,11 +79,7 @@
                
                // TODO: Store the movies in a property to use elsewhere
                
-               for (NSDictionary *dictionary in dictionaries) {
-                   Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
-                   [self.movies addObject:movie];
-                   NSLog(@"%@", movie.title);
-               }
+               self.movies = [Movie moviesWithDictionaries:dictionaries];
                 //NSLog(@"%@", movies);
                
                
@@ -116,19 +112,7 @@
     MovieCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
     // using indexPath
-    Movie *movie = self.movies[indexPath.row];
-    // loading each poster image
-    NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
-    NSString *urlString = movie.posterURL;
-    NSString *fullURL = [baseURL stringByAppendingString:urlString];
-    NSURL *url = [[NSURL alloc] initWithString:fullURL];
-    
-    [cell.movieImageViewer setImageWithURL:url];
-    
-    
-    cell.movieSynposis.text = movie.synopsis;
-    
-    cell.movieTitle.text = movie.title;
+    cell.movie = self.movies[indexPath.row];
     
     
     

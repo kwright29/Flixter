@@ -11,10 +11,16 @@
 -(id)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     
+    NSString *baseURL = @"https://image.tmdb.org/t/p/w500";
+    NSString *path = dictionary[@"poster_path"];
+    NSString *fullURL = [baseURL stringByAppendingString:path];
+    NSURL *url = [[NSURL alloc] initWithString:fullURL];
+    
     self.title = dictionary[@"title"];
-    self.posterURL = dictionary[@"poster_path"];
+    self.posterURL = url;
     self.synopsis = dictionary[@"overview"];
     self.releaseDate = dictionary[@"release_date"];
+    
     
     return self;
 }
@@ -27,5 +33,6 @@
     }
     return movies;
 }
+
 
 @end
