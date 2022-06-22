@@ -25,6 +25,7 @@
 		EED60728285FA2E9000F164F /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED60727285FA2E9000F164F /* GridViewController.m */; };
 		EED6072B285FA4DD000F164F /* GridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EED6072A285FA4DD000F164F /* GridCell.m */; };
 		EEE36650286383C30047F9D7 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE3664F286383C30047F9D7 /* Movie.m */; };
+		EEE366532863B0A50047F9D7 /* MovieApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEE366522863B0A50047F9D7 /* MovieApiManager.m */; };
 		EF9674901345FFEF6E9D4A20 /* Pods_FlixterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5896B2155F8452FE3942EB5F /* Pods_FlixterTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,8 @@
 		EED6072A285FA4DD000F164F /* GridCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridCell.m; sourceTree = "<group>"; };
 		EEE3664E286383C30047F9D7 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		EEE3664F286383C30047F9D7 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		EEE366512863B0A50047F9D7 /* MovieApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieApiManager.h; sourceTree = "<group>"; };
+		EEE366522863B0A50047F9D7 /* MovieApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieApiManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +152,8 @@
 		EE55CE5A285A476D00F6C1BB /* Flixter */ = {
 			isa = PBXGroup;
 			children = (
+				EEE366512863B0A50047F9D7 /* MovieApiManager.h */,
+				EEE366522863B0A50047F9D7 /* MovieApiManager.m */,
 				EE55CE5B285A476D00F6C1BB /* AppDelegate.h */,
 				EE55CE5C285A476D00F6C1BB /* AppDelegate.m */,
 				EE55CE5E285A476D00F6C1BB /* SceneDelegate.h */,
@@ -455,6 +460,7 @@
 				EE121558285D08350091AB8C /* DetailsViewController.m in Sources */,
 				EE55CE6E285A476F00F6C1BB /* main.m in Sources */,
 				EED6072B285FA4DD000F164F /* GridCell.m in Sources */,
+				EEE366532863B0A50047F9D7 /* MovieApiManager.m in Sources */,
 				EE55CE60285A476D00F6C1BB /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
